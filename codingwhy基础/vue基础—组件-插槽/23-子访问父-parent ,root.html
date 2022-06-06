@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+</div>
+
+<template id="cpn">
+  <ccpn>
+    <h2>我是cpn组件</h2>
+  </ccpn>
+</template>
+<template id="ccpn">
+  <div>
+    <h2>我是子组件</h2>
+    <button @click="btnClick">按钮</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // 子访问父 $parent 访问到 parent
+  // 子组件里面 在 添加一个组件 里面访问 parent 变成 vueComponent
+  // 禁止套娃  开发不建议 使用 $parent 增加耦合度
+
+  // $root vue实例 一般放路由 和 vuex
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        data(){
+          return{
+            name:'我是cpn组件的name'
+          }
+        },
+        components: {
+          ccpn:{
+            template:'#ccpn',
+            methods:{
+              btnClick(){
+                // 1、访问父组件 $parent
+                console.log(this.$parent);
+                console.log(this.$parent.name)
+
+                // 2、访问根组件$root  vue实例  基本vue实例 放路由 和vuex
+                console.log(this.$root.message)
+              }
+            }
+          }
+        },
+        },
+    },
+  })
+</script>
+</body>
+</html>

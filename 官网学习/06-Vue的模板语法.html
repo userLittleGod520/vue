@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src='../../js/vue.js'></script>
+
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-once>名字:{{name}}</li>
+				<li v-html="art_html"></li>
+				<li v-bind:class="red">v-bing绑定属性</li>
+				<li>js表达式:{{num + 1}}</li>
+				<li >三元表达式:{{ok ? 'yes':'no'}}</li>
+			</ul>
+			
+			<div v-if="type === 'A'">A</div>
+			<div v-else-if="type === 'B'">B</div>
+			<div v-else-if="type ==='C'">C</div>
+			<div v-else>Not A/B/C</div>
+		</div>
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				type:'B',
+				name:'李神',
+				art_html:'<a href="http://www.baidu.com">百度</a>',
+				red:'red',
+				num:0,
+				ok:0,
+			},
+			methods:{
+				
+			}
+		})
+		</script>
+		<style>
+		.red{
+			color:red;
+		}
+
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../js/vue.js"></script>
+		<style>
+		#app{
+			border:1px solid red;
+		}
+		.demo{
+			width:200px;
+			height:200px;
+			border:3px soli pink;
+			margin-left:100px;	
+		}
+		.demo2{
+			margin:50px;
+		}
+		</style>
+	</head>
+	<body> 
+		<div id="app">
+			<div class="demo">
+				<input type="text" v-model="message" placeholder="输入你的名字">
+				<p>显示:{{message}}</p>
+			</div>
+			<div class="demo">
+				<input type="checkbox" id="checkbox" v-model="checked">
+				<label for="checkbox">{{checked}}</label>
+			</div>
+			<div class="demo">
+				<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+				<label for="jack">Jack</label>
+				<input type="checkbox" id="john" value="John" v-model="checkedNames">
+				<label for="john">John</label>
+				<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+				<label>Mike</label>
+				<br>
+				<span>Checked names: {{ checkedNames}}</span>
+			</div>
+			<div class="demo">
+				<input type="radio" id="one" value="One" v-model="picked">
+				<label for="one">One</label>
+				<br>
+				<input type="radio" id="two" value="Two" v-model="picked">
+				<label for="two">Two</label>
+				<br>
+				<span>picked: {{picked}}</span>
+			</div>
+<!-- 			<div class="demo">
+				<select v-model="selected">
+					<option disabled value="">请选择你心中的NBA球星</option>
+					<option>Leborn James</option>
+					<option>Stephen Curry</option>
+					<option>Michael Jordan</option>
+				</select>
+				<br><span>我的选择是: {{ selected}} </span>
+			</div> -->
+			<div class="demo2">
+				<select v-model="selected">
+					<option v-for="item in options"  :value="item.value">
+					{{item.text}}
+					</option>
+				</select>
+				<span>选择:{{selected}}</span>
+			</div>
+			<div class="demo">
+				<input type="text">
+			</div>
+		</div>
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				message:this.message,
+				checked:true,
+				checkedNames:['Jack','John','Mike'],
+				picked:'',
+				// selected:'',
+				selected:'A',
+				options:[
+					{text:'One',value:"A"},
+					{text:'Two',value:"B"},
+					{text:'Three',value:"C"},
+				]
+			},
+			methods:{
+				
+			}
+		})
+		</script>
+	</body>
+</html>

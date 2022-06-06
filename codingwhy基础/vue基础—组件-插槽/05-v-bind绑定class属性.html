@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .isRed{
+      color:red;
+    }
+    .red{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+<h2  :class="active">{{message}}</h2>
+  <h2 :class="{red:isRed,yellow:isYellow}">{{message}}</h2>
+  <button v-on:click="toggle">切换</button>
+  <h2 :class="getClass()">{{message}}</h2>
+<!--  数组格式-->d
+  <h2 :class="[black,purple]"></h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-bind:属性  动态绑定属性
+  // 开发语法: 有时候需要 加上属性  有时候不需要属性
+  // 有2种方法  1.对象方法   2.数组方法
+  // 1、对象方法 动态绑定class  :class="{类名1: true/false  类名2: true/false}"
+  // 2、数组方式 :class=[类名变量,类名变量]  写在data里面
+  // 将类名封装到 return 里面拿出来
+
+  // 为什么要动态绑定样式?
+  // (组件化开发) - 把页面 分成好几份 单独封装成一个组件 navbar.vue文件
+  // 可复用 不同的部分 可以通过插槽 来定制
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      active:'active',
+      isRed:true,
+      isYellow:true,
+      black:'black',
+      purple:'purple'
+    },
+    methods:{
+      toggle:function(){
+        this.isRed = !this.isRed
+      },
+      getClass:function(){
+         return { Red: this.isRed , yellow: this.isYellow}
+      }
+    }
+  })
+</script>
+</body>
+</html>

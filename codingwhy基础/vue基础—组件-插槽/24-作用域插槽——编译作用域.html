@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <cpn v-show="isShow"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>我是子组件</h2>
+    <p>123455</p>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // 父组件模板 里面使用 v-show="isShow" 会使用 vue实例里面的
+  // 确定 父组件模板 里面 使用时候 查找的作用域  在那个模板里面挂载 就在哪里找
+  // 父组件模板里面所有东西 都在父级作用域里面编译
+  // 子组件模板所有东西都会在 子级作用域里面编译
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      isShow:true,
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        data(){
+          return {
+            isShow:false
+          }
+        }
+      }
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

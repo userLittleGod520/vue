@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in letters"> {{item}}</li>
+  </ul>
+  <button @click="btnClick">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 1、push 方法 可以做到响应式 可以操作多个参数 看到 ...item 就是可以传递多个值
+  // 2、pop()  删除数组里最后一个参数
+  // 3、shift() 删除数组里面的第一个元素
+  // 4、unshift() 在数组最前面添加元素   可以操作多个参数
+  // 5、splice(start,1,'a') 删除元素/插入元素/替换元素  start 从哪里开始(起始值) 1 要删除的个数  'a' 要插入 替换的元素
+  // 删除元素 :第二个参数 表示删除几个  如果没有第二个参数 为0 就删除数组
+  // 插入元素/替换元素: 第三个参数  添加想替换和插入的值   this.letters.splice(0,2,'x')
+  // 插入 第二个参数为 0
+  // 6、sort(); 数组排序
+  // 7、reverse()  数组翻转
+  // Vue.set(要修改的对象、索引值、修改后的值)
+  // 8、Vue.set(this.letters,0,'abcd')
+  // 上面都是响应式的 刷新数据
+  //  通过索引值 修改数组里面的元素时  不会响应式刷新
+  //  this.letters[0] = 'addd';
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      letters:['a','b','c','d']
+    },
+    methods:{
+      btnClick(){
+        // 1、push方法
+        // this.letters.push('aaa')
+
+        // 2、通过索引值 修改数组里面的元素
+        // this.letters[0] = 'bbbb';
+        // this.letters.pop();
+        // this.letters.shift();
+        // this.letters.unshift(1,2,3);
+        // this.letters.splice(0,2); // 从下标为0 开始 删除2个参数
+        // this.letters.splice(0,0,'x')
+        // this.letters.splice(0,2,'x')
+        // Vue.set(this.letters,0 ,'abcd')
+
+
+        // 修改索引值 操作  vue不会响应式操作 元素  但是数组里面的元素确实发生了 变化
+        // this.letters[0] = 'hahha'
+      }
+    }
+  })
+</script>
+</body>
+</html>

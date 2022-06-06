@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../js/vue.js"></script>
+	</head>
+	<style>
+	</style>
+	<body>
+		<div id="app">
+			<p v-if="seen">v-if指令:false隐藏,true显示</p>
+			<a v-bind:href="url">v-bind绑定的href跳转</a>
+			<div @click='click1'>
+				<div @click.stop='click2'>
+					{{dianji}}
+				</div>
+			</div>
+			<!-- {active: isActive,green:isGreen} -->
+			<div v-bind:class="[isActive ? 'active':'',isGreen?'green':'']" style="width:200px;height:200px;text-align:center;line-height:200px;">
+				active
+			</div>
+			
+			<div :style="{color:color,fontSzie:size}">绑定样式</div>
+		</div> 
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				seen:true,
+				url:'http://www.baidu.com',
+				dianji:'click me……',
+				isActive:true,
+				isGreen:false,
+				color:#ff000'',
+				size:'50px'
+			},
+			methods:{
+				click1:function(){
+					console.log('clicl me……');
+				},
+				click2:function(){
+					console.log('click me 2……');
+				}
+			}
+		})
+		</script>
+		<style>
+		.green{
+			font-size: 50px;
+			color:green;
+		}
+		.active{
+			background-color:Red;
+		}
+		</style>
+	</body>
+</html>

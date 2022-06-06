@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<cpn>
+</cpn>
+<div id="app">
+  <my-cpm></my-cpm>
+  <my-cpm></my-cpm>
+  <my-cpm></my-cpm>
+  <my-cpm></my-cpm>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 顺序不能搞反
+  // template 里面需要使用div 嵌套在外层使用
+  // 1、调用Vue.extend创建组件构造器对象 template 属性
+  const cpnC = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>哈哈哈哈哈</p>
+        <p>呵呵呵呵呵</p>
+       </div>`
+    })
+  // 2、注册组件
+  Vue.component('my-cpm',cpnC)
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

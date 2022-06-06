@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--  父组件模板  -->
+<div id="app">
+  <cpn @item-click='haha'></cpn>
+</div>
+
+<!-- 子组件模板  -->
+<template id="cpn">
+  <div>
+    <h2>子传父</h2>
+    <ul>
+      <button v-for="item in cetagory" @click="btnClick(item)">{{item.name}}</button>
+    </ul>
+  </div>
+</template>
+<script src="./js/vue.js"></script>
+<script>
+  // 子组件
+  const cpn = {
+    template:'#cpn',
+    data(){
+      return {
+        cetagory:[
+          {id:01,name:'红楼梦',author:'施耐庵'},
+          {id:02,name:'红楼梦2',author:'施耐庵'},
+          {id:03,name:'红楼梦3',author:'施耐庵'},
+          {id:04,name:'红楼梦4',author:'施耐庵'},
+        ]
+    }
+    },
+    methods:{
+      btnClick(item){
+        // 自定义事件
+        this.$emit('item-click',item)
+      }
+    }
+  }
+  // 父组件
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    components:{
+      'cpn': cpn
+    },
+    methods:{
+      haha(item){
+        console.log(item.name)
+      }
+    }
+  })
+</script>
+</body>
+</html>

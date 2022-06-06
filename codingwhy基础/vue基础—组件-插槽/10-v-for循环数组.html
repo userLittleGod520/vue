@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in names">{{item}}</li>
+    <li v-for="(item,index) in people">{{item.name}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-for 循环数组 item
+  // v-for(item in 要循环的对象)   获取一个值的时候  只会获取value
+  // 获取对象 使用 value   value和key  index
+  // 官方推荐 使用v-for时，给对应的元素和对象 添加 key 加上key提高性能 要保证 key的唯一性  否则没有什么意义
+  // key的作用主要 为了高效的更新虚拟DOM
+  // 虚拟DOM  vue在创建 元素时 会生成虚拟DOM 给到真实DOM里面   diff算法 二叉树  线性表 加上key变成 链表
+   // diff 算法是指生成更新补丁的方式，主要应用于虚拟 DOM 树变化后，更新真实 DOM。
+   const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      names:['乔丹','詹姆斯','科比','库里',],
+      people:[
+        {name:'lishen',age:19},
+        {name:'lishen2',age:19},
+        {name:'lishen3',age:19},
+        {name:'lishen4',age:19},
+      ]
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

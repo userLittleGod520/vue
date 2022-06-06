@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn :c-info="info"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>{{cInfo}}</h2>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // props 里面如何使用 驼峰
+  // 驼峰标识 会导致 传值错误  v-bind: 不支持驼峰
+  // 解决方法 v-i I 写法
+
+  // template 需要根 div包裹起来
+  const cpn ={
+    template:'#cpn',
+    props:{
+      cInfo:{
+        type:Object,
+        default(){
+          return {}
+        }
+      }
+    }
+  }
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      info:{
+        name:'lishen',
+        age:19,
+        height:1.6
+      }
+    },
+    components:{
+      cpn
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

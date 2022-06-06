@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    [v-cloak]{
+      display:none;
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-cloak>
+  <h3>{{message}}</h3>
+  <h3 v-pre>{{message}}</h3>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-pre  将元素原封不动的解析出来  不做任何操作
+  // v-cloak: cloak(斗篷)  解决vue没解析前的 闪烁问题  3秒后移除属性 v-cloak 斗篷
+  setTimeout(function(){
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'你好啊'
+      },
+      methods:{
+
+      }
+    })
+  },3000)
+</script>
+</body>
+</html>

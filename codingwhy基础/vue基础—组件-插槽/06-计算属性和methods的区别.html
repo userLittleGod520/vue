@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  1、直接拼接  语法过于繁琐-->
+  <h2>{{firstName}} {{lastName}}</h2>
+
+  <!--  2、通过定义methods  调用几次 执行几次 -->
+  <h2>{{ getFullName()}}</h2>
+  <h2>{{ getFullName()}}</h2>
+  <h2>{{ getFullName()}}</h2>
+  <h2>{{ getFullName()}}</h2>
+  <!--  3、通过computed  调用多次  执行一次-->
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 计算属性比 methods 性能更好
+  // 因为computed  里面有一层缓存 看fistName 和lastName 有没有变化  如果没有变化 直接将原来的结果显示 修改了值就将修改的显示
+  // computed 优势 : 1、代码更简洁  2、性能更好
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      firstName:'kobe',
+      lastName:'bryant'
+    },
+    computed:{
+      fullName:function(){
+        console.log('计算属性我被调用了')
+        return this.firstName + '   '+ this.lastName
+      }
+    },
+    methods:{
+      getFullName:function(){
+        console.log('我被调用了');
+        return this.firstName + '  ' + this.lastName
+      }
+    }
+  })
+</script>
+</body>
+</html>

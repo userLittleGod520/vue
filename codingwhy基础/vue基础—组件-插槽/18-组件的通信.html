@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn v-bind:cvoices="voices" :cmessage="message"></cpn>
+  <cpn :cmessage="message"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>父组件传递给子组件</h2>
+    <ul>
+      <li>{{cvoices}}</li>
+      <li>{{cmessage}}</li>
+    </ul>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // 组件之间的通信:
+  // 父组件传递 子组件 props  在组件里面使用  props: 里面设置新变量 接收 父组件里面的数据
+  // 1、props 数组写法  变量接收完毕  在template里面使用 v-bind:cmessage(刚刚接收过来的变量)
+  // 2、给props对象写法   里面 传递的变量加上 数据类型   加上类型限制  required:true 必须要传递的cmessage
+  // 也可以使用 props:{  cmessage:{ tpye:String, default:'abc' required:true } } 提供默认值
+
+  // 3、自定义验证函数
+  // propF:{
+  //  validator: function(value){
+  //   return ['花海','一路向北','稻香'].indexOf(value) !== -1
+  //  }
+  // }
+  const cpn = {
+    template:'#cpn',
+    // props:['cvioces','cmessage'], // props数组写法
+    props:{
+      // cvoices:Array,
+      // cmessage:String
+      // 加上默认值default
+      cmessage:{
+        type:String, // 类型是对象或者数组时，默认值必须是一个函数
+        default:'aaaa',
+        required:true // 必须在组件挂载到vue实例里面 写 cmessage 这个
+      },
+      cvoices:{
+        type:Array,
+        default(){
+          return  ['花海','稻香','一路向北']
+        }
+      }
+    },
+
+    // 自定义约束
+    propsConst:{
+      validator: function(value){
+          return ['花海','一路向北','稻香'].indexOf(value) !== -1
+         }
+    },
+
+    data(){
+      return {}
+    }
+  }
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      voices:['花海','稻香','一路向北'],
+    },
+    components:{  // 对象增强 写法  如果 'cpn' : cpn  写一个就行了
+      cpn
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

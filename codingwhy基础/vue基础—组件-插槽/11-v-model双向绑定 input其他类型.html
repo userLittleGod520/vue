@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div{
+      margin:100px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <label for="male">
+    <input type="radio" id="male"  value="男" v-model="sex"> 男
+    <h2>你选择的性别是:{{sex}}</h2>
+  </label>
+  <label for="female">
+    <input type="radio" id="female"  value="女" v-model="sex" > 女
+  </label>
+
+<!--  checkbox单选-->
+<div>
+  <label for="agree">
+    <input type="checkbox" id="agree" v-model=" isAgree">同意协议
+  </label>
+  <h2>你的选择是{{isAgree}}</h2>
+  <button :disabled="!isAgree">下一步</button>
+</div>
+<!--  checkbox多选-->
+    <div>
+        <input type="checkbox" value="篮球" v-model="hobbies">篮球
+        <input type="checkbox" value="足球"   v-model="hobbies">足球
+        <input type="checkbox" value="乒乓球"  v-model="hobbies">乒乓球
+        <input type="checkbox" value="羽毛球"  v-model="hobbies">羽毛球
+      <p>您的爱好是{{hobbies}}</p>
+    </div>
+<!--  select 单选-->
+  <div>
+    <select name="abc" id=""  v-model="nbaStar">
+      <option value="科比">科比</option>
+      <option value="詹姆斯">詹姆斯</option>
+      <option value="乔丹">乔丹</option>
+      <option value="库里" >库里</option>
+    </select>
+    <h2>你选择的NBA球星是:{{nbaStar}}</h2>
+  </div>
+
+<!--  select 复选-->
+  <div>
+    <select name="abc"  v-model="nbaStars" multiple>
+      <option value="科比">科比</option>
+      <option value="詹姆斯">詹姆斯</option>
+      <option value="乔丹">乔丹</option>
+      <option value="库里" >库里</option>
+    </select>
+    <h2>你选择的NBA球星是:{{ nbaStars}}</h2>
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-model 除了绑定 input的text属性 还可以绑定 多个属性 如: radio,checkbox
+  // input的radio 需要单选  绑定name同属性 一样 name='sex'
+  // radio 一旦2个属性都绑定了sex  可以将name删掉
+  // checkbox 单选框 对应 布尔值
+  // CheckBox 多选框  对应数组
+  // select  和CheckBox一样  也分为 单选和多选
+  // 单选 只能选址一个 绑定一个值
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      sex:'',
+      isAgree:true,
+      hobbies:[],
+      nbaStar:'科比',
+      nbaStars:[],
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

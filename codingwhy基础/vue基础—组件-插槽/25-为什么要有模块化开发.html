@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 项目经理/组长  发布需求 写了 main.js 写公共的东西
+  // 小明 写了个reg.js  都需要引入进来  用到了name = '小明',age=22 flag= true 定义了函数
+  // 小红 login.js  引入进来  name='小红'  flag=false  双方冲突 全局变量冲突 使用闭包解决 代码的复用性降低了
+  // 对代码js文件的依赖性 非常重要
+  // 老办法: 定义个 模块化 对象接收 ModelA = (function (){  })()
+  // 里面设置 空对象 var obj = {};  return 对象 将对象暴露出去
+
+  // 利用规定好的模块化规范 CommonJs(node)  AMD CMD ES6的Modules
+
+  // CommonJs 了解  模块有2个核心: !导入  !导出
+  // 导入: const http = require('http'); // 导入第三方模块
+  // 导出 module.exports =  {  } // 暴露出去
+
+
+  // es6 里面的模块化 新增 exports 和 imports 导入
+  //
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

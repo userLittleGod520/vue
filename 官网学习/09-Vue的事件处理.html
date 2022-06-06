@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src='../../js/vue.js'></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="demo1">
+				<button>钱包：{{moeny}}</button>
+				<button @click='add'>+</button>
+				<button @click='sub'>-</button>
+				<button v-on:dblclick="greet('abc',$event)">greet</button>
+			</div>
+		</div>
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				moeny:'2000'
+			},
+			methods:{
+				add:function(){
+					this.moeny++;
+				},
+				sub:function(){
+					this.moeny--;
+				},
+				greet:function(str,e){
+					alert(str);
+					console.log(e);
+				}
+			}
+		})
+		</script>
+	</body>
+</html>

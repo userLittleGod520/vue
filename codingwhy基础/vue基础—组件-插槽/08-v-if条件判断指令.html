@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2 v-if="isShow">{{message}}
+  <div>ABC</div>
+    <div>ABC</div>
+    <div>ABC</div>
+    <div>ABC</div>
+  </h2>
+<h1 v-else>isShow为false时，显示我</h1>
+  <div>
+    <h2 v-if="score >=90">优秀</h2>
+    <h2 v-else-if="score >=60">及格</h2>
+    <h2 v-else-if="score >=50">不及格</h2>
+    <h2 v-else>哈哈哈</h2>
+
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-if  true显示  false隐藏
+  // v-else 跟 v-if 反着来
+  // v-else-if
+  // 条件很多时  不建议使用 v-if 嵌套使用
+  // 建议写到 计算属性里面去
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      isShow:true ,
+      score:99,
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  组件实例-->
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+</div>
+<template id="cpn">
+  <div>
+    我是组件
+    <h2>当前计数:{{num}}</h2>
+    <button @click="add">+</button>
+    <button @click=" sub">-</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // vue组件里面 data为什么 是个函数?
+  // 因为 如果data 用对象 方法 写 会 影响其他的值全变成一样的 会出现连锁反应  修改了对象里面的 内存地址
+  // 写在函数里面  写在引用类型里面  不会修改内存地址  栈空间
+  // 当data里面 传递的是一个对象 时  修改值会出现连锁反应
+  const obj = {
+    num:0
+  }
+  Vue.component('cpn1',{
+    template:'#cpn',
+    // data(){
+    //   return {
+    //     num:0
+    //   }
+    // },
+    data(){
+      return obj
+    },
+    methods: {
+      add(){
+        this.num++
+      },
+      sub(){
+        this.num--
+      }
+    }
+  })
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

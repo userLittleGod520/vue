@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 箭头函数 定义函数的方式
+        // 1、定义函数的方式
+        const aa  = function(){
+
+        }
+        // 2、对象为字面量定义函数‘
+        const obj = {
+            bbb(){
+
+            }
+        } 
+        // 3、es6的箭头函数
+        // const ccc  = (参数列表) =>{
+            
+        // }
+
+        const ccc = ()=>{
+
+        }
+    </script>
+
+
+
+
+    <script>
+        // 有参数的箭头函数
+        const sum = (num1,num2) =>{
+            return num1 + num2
+        }
+        console.log(sum(10,20));
+
+        // 1.2 放入一个参数
+        const power = num  =>{
+            return num * num
+        }
+        console.log(power(20));
+
+        // 2、函数中
+        const  test = ()=>{
+            // 1、打印一个hello world
+            console.log('hello world');
+            // 2、打印一个 vue.js
+            console.log('hello vue.js');
+        }
+
+
+        // 函数里面只有一行时可以简写
+        // const mul = (num1,num2) =>{
+        //     return num1 + num2
+        // }
+
+        // 简写
+        const mul = (num1,num2) => num1 * num2;
+        console.log(mul(20,30));
+
+        const demo = ()=> console.log('hello world');  
+        console.log(demo()); // undefined 没有返回值
+    </script>
+
+
+
+<script>
+    // 箭头函数中 this的使用  
+    // 讨论:stack overflow  箭头函数里面的this?
+    // 结论: 箭头函数中的this 引用的就是最新作用域中的this  向外层作用域中 一层层向外层查找this
+
+    // setTimeout(function(){
+    //     console.log(this);
+    // },3000)
+
+    // setTimeout(()=>{
+    //     console.log(this);
+    // },3000)
+
+    const obj2 ={
+        aaa(){
+            setTimeout(function(){
+                console.log(this); // window
+            },4000)
+        setTimeout(()=>{
+            console.log(this);  // obj
+        },4000)
+        }
+    } 
+    obj2.aaa(); 
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item,index in items" :key='index'>{{index}},{{item.name}}</li>
+			</ul>
+			<ul>
+				<li v-for="value,key in object" :key='key'>{{love}}  {{value}}</li>
+			</ul>
+		</div>
+		<script>
+	    new Vue({
+			el:'#app',
+			data:{
+				love:'tags: ', 
+				items:[
+					{
+						name:'laker'
+					},
+					{
+						name:'james'
+					}
+				],
+				object:{
+					    title:'I love you xiangNi',
+						title2:'and I miss you',
+						title3:'I hope you can be happy every day!'
+				}
+			},
+		});
+		</script>
+	</body>
+</html>

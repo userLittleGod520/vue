@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h1>{{firstName }} {{lastName}}</h1>
+  <h2>{{fullName}}</h2>
+<!--  计算属性写法-->
+  <h2></h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 计算属性的基本使用  对要展示的数据 进行结合 computed (计算) 定义的也是函数 ( 不加动词 按照属性给名字)
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      firstName:'kobe',
+      lastName:'bryant'
+    },
+    computed:{
+      fullName:function(){
+        return this.firstName + '  '+this.lastName
+      }
+    },
+    methods:{
+      getFullName:function (){
+        return this.firstName + '  '+this.lastName
+      }
+    }
+  })
+</script>
+</body>
+</html>

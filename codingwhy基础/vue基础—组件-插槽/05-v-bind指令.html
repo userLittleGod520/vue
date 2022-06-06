@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <img style="width:200px;" v-bind:src="imgUrl" alt="">
+  <a href="https://cn.vuejs.org/">vue官网</a>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-bind:属性名  动态绑定属性  例如 v-bind:img  v-bind:href 简写 :img  :href
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      imgUrl:'https://cn.vuejs.org/images/logo.svg',
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

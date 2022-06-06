@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn2></cpn2>
+  <cpn2></cpn2>
+
+</div>
+<!--<script type="text/x-template" id="cpn">-->
+<!--<div>-->
+<!--  <h2>模板分离</h2>-->
+<!--  <p>哈哈哈</p>-->
+<!--</div>-->
+<!--</script>-->
+
+<!--template 写法-->
+<template id="cpn2">
+  <div>
+    <h2>template写法</h2>
+    <p>哈哈哈哈哈</p>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // 模板分离写法
+  // 1、模板写html里面 <script type="text/x-template" id=""> 注意类型 text/x-template
+  // 2、template 标签
+
+
+  // 注册一个全局组件 分离写法
+  Vue.component('cpn2',{
+    template:'#cpn2'
+  })
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

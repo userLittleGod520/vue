@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-bind:value="message" v-on:input="message =$event.target.value">
+  {{message}}
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  //  v-model 双向绑定   操作表单元素和数据的双向绑定
+  // 适用于、input、textarea
+  //  界面发生改变，数据也会跟着改变
+  // v-model 原理  == v:bind:value   v-on:input="valueChange"  2个操作
+  // 第一个操作  v-bind给表单绑定value值
+  // 第二个操作  v-on指令 给当前元素绑定input事件
+  // 通过 v:bind:value 绑定input的value值
+  // 再通过v-on:input='change'  绑定change 事件  里面可以拿到 事件对象 event.target.value 拿到修改的值
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+      valueChange(event){
+        this.message = event.target.value;
+      }
+    }
+  })
+</script>
+</body>
+</html>

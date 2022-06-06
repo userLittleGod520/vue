@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app" style="margin-left:100px;">
+  <lable  v-for="item in hobbies"  >
+    <input type="checkbox" v-model="array" :value="item" >{{item}}
+  </lable>
+  <h2>你的选择是:{{array}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-model 值绑定  what the hell is that?
+  // 用 v-for 将input里面的值 循环出来 循环写在 label里面
+  // 不要把值写死  要用动态的绑定  通过服务端渲染 给用户
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      hobbies:['篮球','羽毛球','足球','排球'],
+      array:[],
+      lzl:true
+    },
+    methods:{
+    }
+  })
+</script>
+</body>
+</html>

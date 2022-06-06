@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>es6的语法</title>
+</head>
+<body>
+<script src="../js/vue.js">
+</script>
+<div id="app">
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // es6 的 const 和 let
+  //其实就是var因为 js 最初设计时的坑, var的变量提升 、变量的作用域和函数的定义  容易 变量污染
+  // 所以  let 和 const 诞生了  let 有块级作用域 各司其职  不变的值使用 const (常量)
+  // es6开发中，优先使用 const， 如果有需要改变的标示符时 在使用 let
+  // 常量的定义就是  不可以修改指向 对象   , 但是可以修改对象内部的属性
+  // 使用常量时 必须赋值
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

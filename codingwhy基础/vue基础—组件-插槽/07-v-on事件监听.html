@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{num}}</h2>
+  <button v-on:click="num++">add</button>
+  <button v-on:click="num--">sub</button>
+  <button v-on:click="add">增加</button>
+  <button v-on:click="sub">减少</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // v-on:click 事件绑定  语法糖 @click
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      num:0,
+    },
+    methods:{
+      add(){
+        this.num++
+      },
+      sub(){
+        this.num--
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn>
+<!--    目标是 获取子组件的pLangauges-->
+    <div slot-scope="slot">
+<!--      <span v-for="item in slot.data">{{item}}</span>-->
+      <br>
+      <span>{{slot.data.join(' - ')}}</span>
+      <br>
+      <span>{{slot.data.join(' * ')}}</span>
+
+    </div>
+  </cpn>
+</div>
+<template id="cpn">
+  <div>
+  <slot :data="pLanguages">
+    <ul>
+      <li v-for="item in  pLanguages">{{item}}</li>
+    </ul>
+  </slot>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  // 作用域插槽
+  // v-for 写在 插槽里面 插槽添加 属性 :data="pLanguages"
+  // 从 父组件模板 里面 拿到 slot-scope="slot"
+  // 然后 就OK了
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    create(){
+      this.pLanguages.join(' - ')
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        data(){
+          return {
+            pLanguages:['Javascript','Python','Java','C++','go']
+          }
+        }
+      }
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

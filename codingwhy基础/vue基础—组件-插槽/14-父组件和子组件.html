@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn2></cpn2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 父组件 和 子组件
+  // 可以将cpn1 组件 注册到 cpn2组件里面
+  // 然后通过cpn2 渲染出来 ，cpn2就是 cpn1的父组件   cpn1就是 子组件
+  // 根组件 const app = new Vue(components:)
+
+  // 写cpn1 报错原因
+  // 因为 vue实例里面 压根就不知道 cpn1 的组件
+  // 先在 vue实例里面 components 里面找 cpn1组件 cpn1已经被cpn2 解析出来了  所以报错了
+
+  // 创建第一个组件  子组件
+  const cpnC1 = Vue.extend({
+    template:`
+    <div>
+     <div>组件1</div>
+    <p>哈哈哈哈</p>
+</div>
+`
+  })
+  // 创建第二个组件 父组件
+  const cpnC2 = Vue.extend({
+    template:`
+    <div>
+     <div>组件2</div>
+     <p>呵呵呵呵呵</p>
+     <cpn1></cpn1>
+</div>
+`,
+    components:{ // cpn2 就是父组件
+      cpn1:cpnC1
+    }
+  })
+  // root 组件
+  const app = new  Vue({
+    el:'#app',
+    data:{
+
+    },
+     components:{
+       cpn2:cpnC2
+     }
+  })
+</script>
+</body>
+</html>

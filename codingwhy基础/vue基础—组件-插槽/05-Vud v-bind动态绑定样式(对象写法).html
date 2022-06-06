@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2 :style="{fontSize:size,backgroundColor:color}">{{message}}</h2>
+  <h2 :style="getClass()">{{message}}</h2>
+</div>
+<script src="../作业/js/vue.js"></script>
+<script>
+  // v-bind 动态绑定样式  v-bind:style:{key(属性名):value(属性值) } 如果不加 属性值不加'' 会被解析成变量
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      size:'50px',
+      color:'red',
+    },
+    methods:{
+      getClass:function(){
+        return {fontSize:this.size,backgroundColor:this.color}
+      }
+    }
+  })
+</script>
+</body>
+</html>

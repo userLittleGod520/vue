@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-model.lazy="message">
+  <h2>{{message}}</h2>
+  <div>
+    <input type="number"  v-model.number="age">
+    <h2>{{age}}{{typeof(age)}}</h2>
+  </div>
+  <div>
+    <input type="text" v-model.trim="name">
+    <p>你输入的名字:{{name}}</p>
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 修饰符 v-model lazyoload 懒加载
+  // .lazy 用户输入完 失去焦点   按下enter 再返回数据
+  // .number  将用户输入内容转换成 number 因为input的值默认 是string类型
+  // .trim 去除字符串 的两边 空格
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      age:'',
+      name:'',
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

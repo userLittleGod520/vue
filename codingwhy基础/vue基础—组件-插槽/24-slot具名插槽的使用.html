@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn>
+    <span>标题</span>
+    <button slot="center">中间</button>
+    <i slot="right">右边</i>
+  </cpn>
+</div>
+<template id="cpn">
+  <div>
+    <!--    <button>按钮</button>-->
+    <slot name="left"><span>左边的</span></slot>
+    <slot name="center"><span>中间的</span></slot>
+    <slot name="right"><span>右边的</span></slot>
+    <slot>哈哈哈哈</slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  // slot插槽的基本使用:
+  // slot 写在 template里面 如果有默认值<slot><button>默认值</button></slot> 模板全都是 <slot></slot>
+  // 模板里面有 东西 不会替换
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊'
+    },
+    components:{
+      cpn:{
+        template:'#cpn'
+      }
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // computed 计算属性 调用多次 都只会执行一次  而methods 调用几次  执行几次
+  // 具有缓存
+  // setter和getter  计算属性 一般不写set方法  只读属性
+  // 不写()调用  是因为 设置了get属性 只读属性
+  // 写set属性  必须写参数
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      firstName:'kobe',
+      lastName:'bryant'
+    },
+    computed: {
+      // 最终写法
+      // fullName:function(){
+      //   return this.firstName + '   ' + this.lastName
+      // }
+      fullName:{
+        // set 可以不写
+        set:function(newValue){
+          console.log(newValue);
+          const name = newValue.split(' ');
+          this.firstName = name[0];
+          this.lastName = name[1];
+        },
+        get:function(){
+          return this.firstName + '   ' + this.lastName
+        }
+      }
+    },
+  })
+</script>
+</body>
+</html>
