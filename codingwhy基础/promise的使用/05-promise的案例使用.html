@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //  需求本身依赖 2个请求  要等待2个请求完成
+
+  let isResult1 = false
+  let isResult2 = true
+
+   $ajax({
+     url:'',
+     success:function(){
+       console.log('结果1')
+       isResult1 = true
+       handleResult()
+     }
+   })
+   $ajax({
+     url:'',
+     success:function(){
+       console.log('结果2')
+       isResult2 = true
+       handleResult()
+     }
+   })
+
+  function handleResult(){
+    if (isResult1 && isResult2){
+      //  必须2个请求都完成 在可以执行
+    }
+  }
+
+
+</script>
+</body>
+</html>

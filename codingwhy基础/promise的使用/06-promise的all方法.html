@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // Promise.all([]) 传入可迭代对象 例如数组 一起拿到值
+  Promise.all([
+      new Promise((resolve,reject)=>{
+        $ajax({
+          url:'url',
+          success:function(data){
+            resolve(data)
+          }
+        })
+      }),
+      new Promise((resolve,reject)=>{
+        $ajax({
+          url:'url',
+          success:function(data){
+            resolve(data)
+          }
+        })
+      })
+  ]).then(results =>{  // results获取了 ajax两个的data
+    console.log(results)
+  })
+
+
+  // 定时器模拟
+  Promise.all([
+      new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve({name:'lishen',age:19})
+        },2000)
+      }),
+    new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+        resolve({name:'father',age:55})
+      },2000)
+    }),
+  ]).then(results =>{
+    console.log(results);
+  })
+</script>
+</body>
+</html>

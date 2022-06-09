@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 2、使用promise  参数 -> 函数(resolve,reject)
+  // resolve,reject 本身也是函数  调用resolve 后面有个then()函数
+  // 链式编程
+  new Promise((resolve,reject)=>{
+    // 第一次网络请求
+    setTimeout(()=>{
+      resolve()
+    },1000)
+  }).then(()=>{
+    // 第一次拿到结果
+    console.log('hello world')
+    console.log('hello world')
+    console.log('hello world')
+    console.log('hello world')
+    return new Promise((resolve,reject)=>{
+      // 第二次网络请求
+      setTimeout(()=>{
+        resolve()
+      },1000)
+    }).then(()=>{
+      // 第二次拿到结果
+      console.log('hello vue')
+      console.log('hello vue')
+      console.log('hello vue')
+      return new Promise((resolve,reject)=>{
+        // 第三次网络请求
+        setTimeout(()=>{
+          resolve()
+        })
+      }).then(()=>{
+        // 第三次拿结果
+        console.log('hello python')
+      })
+    })
+  })
+
+
+</script>
+</body>
+</html>
